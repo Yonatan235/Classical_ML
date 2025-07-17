@@ -96,11 +96,8 @@ while sum(sign(y(:) .* (w0 + w1 * x(:,1) + w2 * x(:,2)))) ~= n
     counter = counter + 1
 end
 
-% === Plot Final Perceptron Decision Boundary ===
 XX3 = -2.5*rad : 2.5*rad;
 YY3 = (-w1 * XX3 + w0) / w2;   % Solve for x2 in w0 + w1*x1 + w2*x2 = 0
 
-p2 = plot(XX3, YY3, 'black');  % Draw perceptron line
-
-% === Add legend ===
+p2 = plot(XX3, YY3, 'black');  
 legend([p2 s1 s2], {'Perceptron line', 'y(i)=1', 'y(i)=-1'})
