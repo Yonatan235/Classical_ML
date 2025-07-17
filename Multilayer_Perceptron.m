@@ -9,8 +9,8 @@ b = -(k1/2) + k1*rand(1);   % Random intercept in range (-k1/2, k1/2)
 
 % Step 2: Generate n random data points
 n = 20;
-x = zeros(n,2);    % Stores coordinates of data points
-y = zeros(n,1);    % Stores class labels (+1 or -1)
+x = zeros(n,2);    
+y = zeros(n,1);   
 
 % Compute the target line to plot (y = ax + b)
 XX = -k2/2:k2/2;
@@ -19,35 +19,35 @@ YY = a*XX + b;
 % Step 3: Assign labels to data based on the target function
 for i = 1:n
     % Generate a random point in 2D space within the range [-k2/2, k2/2]
-    x(i,1) = -(k2/2) + k2*rand(1);  % x1 coordinate
-    x(i,2) = -(k2/2) + k2*rand(1);  % x2 coordinate
+    x(i,1) = -(k2/2) + k2*rand(1); 
+    x(i,2) = -(k2/2) + k2*rand(1); 
 
     % Assign label +1 if the point is above the target line, -1 if below
     if x(i,2) > a*x(i,1) + b
         y(i) = 1;  % Above the line
         c = [0 0 255]/256;  % Blue color for y = +1
-        s1 = scatter(x(i,1), x(i,2), [], c);  % Plot point
+        s1 = scatter(x(i,1), x(i,2), [], c);  
         xlabel('x1'); ylabel('x2');
         title('Classified Data Set');
         hold on
     elseif x(i,2) < a*x(i,1) + b
         y(i) = -1;  % Below the line
         c = [255 0 0]/256;  % Red color for y = -1
-        s2 = scatter(x(i,1), x(i,2), [], c);  % Plot point
+        s2 = scatter(x(i,1), x(i,2), [], c);  
         hold on
     end
 
     % Plot the target function line
-    p1 = plot(XX, YY, 'g');  % Green line
+    p1 = plot(XX, YY, 'g'); 
     axis([-k2/2 k2/2 -k2/2 k2/2]);
 end
 
 % Step 4: Initialize a random line (the perceptron guess)
 stop = 0;  % Control flag to exit loops if needed
-aa = -(k1/2) + k1*rand(1);  % Initial random slope
-bb = -(k1/2) + k1*rand(1);  % Initial random intercept
+aa = -(k1/2) + k1*rand(1);  
+bb = -(k1/2) + k1*rand(1);  
 
-% Uncomment below to plot initial guess line (optional)
+% plot initial guess line 
 % XX2 = -k2/2:k2/2;
 % YY2 = aa*XX2 + bb;
 % plot(XX2, YY2, 'c');
@@ -94,7 +94,6 @@ XX3 = -k2/2:k2/2;
 YY3 = aa*XX3 + bb;
 p2 = plot(XX3, YY3, 'black');
 
-% Add legend
 legend([p1 p2 s1 s2], {'Target function', 'Perceptron line', 'y(i)=1', 'y(i)=-1'})
 axis([-k2/2 k2/2 -k2/2 k2/2]);
 
