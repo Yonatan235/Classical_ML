@@ -89,7 +89,7 @@ while sum(sign(y(:) .* (w0 + w1 * x(:,1) + w2 * x(:,2)))) ~= n
 
     % Check again if all points are correctly classified
     if sum(sign(y(:) .* (w0 + w1 * x(:,1) + w2 * x(:,2)))) == n
-        i  % Optional: print iteration where convergence happens
+        i  
         break
     end
 
